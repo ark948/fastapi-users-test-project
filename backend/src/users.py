@@ -12,6 +12,7 @@ from fastapi_users.authentication import (
 
 from src.db import User, get_user_db
 
+
 SECRET = "SECRET"
 
 
