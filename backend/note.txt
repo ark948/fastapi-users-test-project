@@ -3,3 +3,6 @@
 
 - evironment variables need to go to env file
 > pip install python-dotenv
+
+
+- need to convert this into an app
