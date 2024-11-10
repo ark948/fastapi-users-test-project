@@ -6,3 +6,9 @@
 
 
 - need to convert this into an app
+
+
+
+authentication backend = (transport + strategy)
+
+AuthenticationBackend --> (BearerTransport + JWTSTrategy)
