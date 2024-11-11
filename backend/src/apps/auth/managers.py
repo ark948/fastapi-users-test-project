@@ -1,12 +1,11 @@
 import uuid
 from typing import Optional
 from fastapi_users import UUIDIDMixin, BaseUserManager
-from fastapi import Request
+from fastapi_users.db import SQLAlchemyUserDatabase
+from src.db import User, get_user_db
+from fastapi import Request, Depends
 from src.apps.auth.models import User
-from src import config
-
-
-SECRET = config.SECRET
+from src.apps.auth.config import SECRET
 
 
 
@@ -26,3 +25,8 @@ class UserManager(UUIDIDMixin, BaseUserManager[User, uuid.UUID]):
         self, user: User, token: str, request: Optional[Request] = None
     ):
         print(f"Verification requested for user {user.id}. Verification token: {token}")
+
+
+
+async def get_user_manager(user_db: SQLAlchemyUserDatabase = Depends(get_user_db)):
+    yield UserManager(user_db)

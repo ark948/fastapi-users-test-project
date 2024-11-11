@@ -1,25 +1,15 @@
 import uuid
 
-from fastapi import Depends
-from fastapi_users.db import SQLAlchemyUserDatabase
 from fastapi_users import FastAPIUsers, models
 from fastapi_users.authentication import (
     AuthenticationBackend,
     BearerTransport,
     JWTStrategy,
 )
+from src.apps.auth.managers import get_user_manager
+from src.apps.auth.config import SECRET
+from src.apps.auth.models import User
 
-from src.db import User, get_user_db
-from src.apps.auth.managers import UserManager
-from src import config
-
-
-SECRET = config.SECRET
-
-
-
-async def get_user_manager(user_db: SQLAlchemyUserDatabase = Depends(get_user_db)):
-    yield UserManager(user_db)
 
 
 bearer_transport = BearerTransport(tokenUrl="user-manager/auth/jwt/login")
