@@ -25,3 +25,8 @@ run the following command:
 - edit the revision file (probably imports such as fastapi_users_db_sqlalchemy)
 run the migration:
 > alembic upgrade head
+add a field to user model to test alembic (like first name)
+make new migration
+> alembic revision --autogenerate -m "add name"
+> alembic upgrade head
+> test the new fields (do not forget to update the schemas as well)
