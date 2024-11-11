@@ -7,7 +7,7 @@ from src.apps.auth.models import User
 
 
 auth_router = APIRouter(
-    prefix='/some-route'
+    prefix='/user-manager'
 )
 
 
