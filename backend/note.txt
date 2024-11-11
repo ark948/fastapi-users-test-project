@@ -5,11 +5,23 @@
 > pip install python-dotenv
 
 
-- need to convert this into an app
-- add alembic
+- need to convert this into an app (done)
+- add alembic 
 
 
 
 authentication backend = (transport + strategy)
 
 AuthenticationBackend --> (BearerTransport + JWTSTrategy)
+
+- adding alembic:
+> pip install alembic
+> alembic init alembic
+- import and add user model and Base model object (wherever they are)
+- also i'm moving sqlalchemy Base object to src.db (from auth app)
+- update the database url in alembic.ini file (only include the sqlite not other toolkits such as aiosqlite)
+run the following command:
+> alembic revision --autogenerate -m "create users table"
+- edit the revision file (probably imports such as fastapi_users_db_sqlalchemy)
+run the migration:
+> alembic upgrade head

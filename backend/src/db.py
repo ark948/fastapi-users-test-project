@@ -1,16 +1,14 @@
 from collections.abc import AsyncGenerator
-
-from fastapi import Depends
-from fastapi_users.db import SQLAlchemyUserDatabase
+from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from src import config
 
 
-from src.apps.auth.models import Base, User
-
-
 DATABASE_URL = config.DATABASE_URL
 
+
+class Base(DeclarativeBase):
+    pass
 
 
 engine = create_async_engine(DATABASE_URL)
@@ -25,7 +23,3 @@ async def create_db_and_tables():
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_maker() as session:
         yield session
-
-
-async def get_user_db(session: AsyncSession = Depends(get_async_session)):
-    yield SQLAlchemyUserDatabase(session, User)

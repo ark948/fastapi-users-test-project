@@ -2,10 +2,10 @@ import uuid
 from typing import Optional
 from fastapi_users import UUIDIDMixin, BaseUserManager
 from fastapi_users.db import SQLAlchemyUserDatabase
-from src.db import User, get_user_db
 from fastapi import Request, Depends
 from src.apps.auth.models import User
 from src.apps.auth.config import SECRET
+from src.apps.auth.database import get_user_db
 
 
 
