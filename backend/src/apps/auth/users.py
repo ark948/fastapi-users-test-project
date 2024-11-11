@@ -1,5 +1,4 @@
 import uuid
-from typing import Optional
 
 from fastapi import Depends
 from fastapi_users.db import SQLAlchemyUserDatabase
@@ -11,7 +10,7 @@ from fastapi_users.authentication import (
 )
 
 from src.db import User, get_user_db
-from src.managers import UserManager
+from src.apps.auth.managers import UserManager
 from src import config
 
 

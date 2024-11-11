@@ -6,6 +6,7 @@
 
 
 - need to convert this into an app
+- add alembic
 
 
 

@@ -2,7 +2,7 @@ import uuid
 from typing import Optional
 from fastapi_users import UUIDIDMixin, BaseUserManager
 from fastapi import Request
-from src.models import User
+from src.apps.auth.models import User
 from src import config
 
 

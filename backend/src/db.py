@@ -1,12 +1,12 @@
 from collections.abc import AsyncGenerator
 
 from fastapi import Depends
-from fastapi_users.db import SQLAlchemyBaseUserTableUUID, SQLAlchemyUserDatabase
+from fastapi_users.db import SQLAlchemyUserDatabase
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from src import config
 
 
-from src.models import Base, User
+from src.apps.auth.models import Base, User
 
 
 DATABASE_URL = config.DATABASE_URL
